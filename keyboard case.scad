@@ -55,6 +55,8 @@ usb_notch_width = 11.887 + 1;
 
 if($preview) {
     left_assembly(explode = true);
+    translate([0, 400])
+        right_assembly(explode = true);
 }
 
 module left_assembly(explode = false) {
@@ -65,6 +67,16 @@ module left_assembly(explode = false) {
         top_left();
     translate([0, 0, 2 * explode_dist])
         electronics_cover_left();
+}
+
+module right_assembly(explode = false) {
+    explode_dist = explode ? 20 : 0;
+
+    bottom_right();
+    translate([0, 0, explode_dist])
+        top_right();
+    translate([0, 0, 2 * explode_dist])
+        electronics_cover_right();
 }
 
 module bottom_left() {
